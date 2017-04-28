@@ -1,0 +1,49 @@
+<h1>Leer CSV</h1>
+<button id="select-directory">
+Abrir
+</button>
+<input type="text" id="salida" value="render/salida.js">
+<button id="leer">leer</button>
+<p id="selected-file"></p>
+
+<script>
+function leercsv(entrada){
+    var fs = require('fs')
+    var csv = require('fast-csv')
+
+    var stream = fs.createReadStream(entrada, { encoding: 'UTF-8'});
+    var outdata = []
+    var csvStream = csv
+        .parse()
+        .on("data", function(data){
+             console.log(data);
+            // outdata.push(data)
+        })
+        .on("end", function(){
+            console.log("done");
+            fs.writeFileSync(salida, 'module.exports = ' + JSON.stringify(outdata))
+        });
+    
+    stream.pipe(csvStream);
+}
+</script>
+<script>
+var ipc = require('electron').ipcRenderer
+
+var selectDirBtn = document.getElementById('select-directory')
+
+selectDirBtn.addEventListener('click', function (event) {
+  ipc.send('open-file-dialog')
+})
+
+ipc.on('selected-directory', function (event, path) {
+    // console.log(path[0].replace('\\', '/'))
+    leercsv(path[0])
+    document.getElementById('selected-file').innerHTML = `You selected: ${path}`
+    var salida = document.getElementById('salida').value
+})
+
+document.getElementById('leer').addEventListener('click', function(event){
+    // leercsv(document.getElementById('selected-file').innerHTML.replace('\\', '\\\\'))
+})
+</script>
