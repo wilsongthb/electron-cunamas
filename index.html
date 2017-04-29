@@ -36,7 +36,7 @@ selectDirBtn.addEventListener('click', function (event) {
   ipc.send('open-file-dialog')
 })
 
-ipc.on('selected-directory', function (event, path) {
+ipc.on('selected-file', function (event, path) {
     // console.log(path[0].replace('\\', '/'))
     leercsv(path[0])
     document.getElementById('selected-file').innerHTML = `You selected: ${path}`
