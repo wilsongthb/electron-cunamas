@@ -20,7 +20,7 @@ var csvStream = csv()
         //  console.log(data);
 
         /// insertar beneficiario
-        var sql = `INSERT INTO \`beneficiarios\` 
+        var sql_beneficiario = `INSERT INTO \`beneficiarios\` 
                 (\`id\`, \`dni\`, \`nombre\`, \`sexo\`, \`fecha_nacimiento\`, \`fecha_registro\`, \`seguro\`, \`numero_seguro\`, \`discapacidad\`, \`id_reg_fila\`) 
                 VALUES 
                 (NULL, 
@@ -33,15 +33,43 @@ var csvStream = csv()
                 '${data[config.csv.beneficiarios.numeroseguro]}', 
                 '${data[config.csv.beneficiarios.discapacidad]}', 
                 '0,${fila}');`
-        console.log(sql)
-        connection.query(sql, function (error, results, fields) {
+        // console.log(sql_beneficiario)
+        connection.query(sql_beneficiario, function (error, results, fields) {
         if (error) throw error;
             // console.log('The solution is: ', results[0].solution);
             console.log(results)
         });
 
-        // 
+        // insertar facilitador
+        var sql_facilitador = `INSERT INTO \`cuidadores\` 
+                (\`id\`, \`nombre\`, \`sexo\`, \`codigo_familia\`, \`id_reg_fila\`) 
+                VALUES 
+                (NULL, 
+                '${data[config.csv.cuidadores.nombre]}', 
+                '${data[config.csv.cuidadores.sexo]}', 
+                '${data[config.csv.cuidadores.codigo_familia]}', 
+                '0,${fila}');`
+        // console.log(sql_facilitador)
+        connection.query(sql_facilitador, function (error, results, fields) {
+        if (error) throw error;
+            // console.log('The solution is: ', results[0].solution);
+            console.log(results)
+        });
 
+        // insertar cuidador
+        var sql_cuidador = `INSERT INTO \`facilitadores\` 
+                (\`id\`, \`nombre\`, \`codigo\`, \`id_reg_fila\`) 
+                VALUES 
+                (NULL, 
+                '${data[config.csv.facilitadores.nombre]}', 
+                '${data[config.csv.facilitadores.codigo]}', 
+                '0,${fila}');`
+        // console.log(sql_cuidador)
+        connection.query(sql_cuidador, function (error, results, fields) {
+        if (error) throw error;
+            // console.log('The solution is: ', results[0].solution);
+            console.log(results)
+        });
 
         // outdata.push(data)
         fila++

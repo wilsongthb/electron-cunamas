@@ -19,6 +19,15 @@
             "seguro": "30",
             "numeroseguro": "31",
             "discapacidad": "41"
+        },
+        "cuidadores": {
+            "nombre": "14",
+            "sexo": "15",
+            "codigo_familia": "10"
+        },
+        "facilitadores": {
+            "nombre": "11",
+            "codigo": "12"
         }
     }
 }
