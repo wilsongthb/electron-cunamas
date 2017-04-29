@@ -3,12 +3,7 @@ const entrada = 'resources/in.csv'
 const salida = 'resources/out.js'
 const config = require('./../main/config.json')
 var mysql      = require('mysql');
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : '',
-  database : 'cunamas'
-});
+var connection = mysql.createConnection(config.db.connection);
 connection.connect();
 
 // code

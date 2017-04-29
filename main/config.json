@@ -1,7 +1,13 @@
 {
     "name": "cunamas",
     "db": {
-        "portApi": "8041"
+        "portApi": "8041",
+        "connection": {
+            "host": "localhost",
+            "user": "root",
+            "password": "",
+            "database": "cunamas"
+        }
     },
     "csv": {
         "beneficiarios": {

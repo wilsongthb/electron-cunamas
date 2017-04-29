@@ -5,12 +5,7 @@ const config = require('./../main/config.json').db
 
 var app = express();
 
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : '',
-  database : 'cunamas'
-});
+var connection = mysql.createConnection(config.connection);
 connection.connect();
 
 var api = mysqltorest(app,connection);
