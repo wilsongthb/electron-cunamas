@@ -9,9 +9,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "angular": "^1.6.4",
+    "bootstrap": "^3.3.7",
     "express": "^4.15.2",
     "fast-csv": "^2.4.0",
+    "html-pdf": "^2.1.0",
+    "materialize-css": "^0.98.2",
     "mysql": "^2.13.0",
-    "mysql-to-rest": "^1.0.8"
+    "mysql-to-rest": "^1.0.8",
+    "vue": "^2.3.2"
   }
 }

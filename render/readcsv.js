@@ -20,6 +20,8 @@ var csvStream = csv()
         //  console.log(data);
 
         /// insertar beneficiario
+        var fecha_nacimiento = data[config.csv.beneficiarios.fechanacimiento].split("/")
+        var fecha_registro = data[config.csv.beneficiarios.fecharegistro].split("/")
         var sql_beneficiario = `INSERT INTO \`beneficiarios\` 
                 (\`id\`, \`dni\`, \`nombre\`, \`sexo\`, \`fecha_nacimiento\`, \`fecha_registro\`, \`seguro\`, \`numero_seguro\`, \`discapacidad\`, \`id_reg_fila\`) 
                 VALUES 
@@ -27,17 +29,18 @@ var csvStream = csv()
                 '${data[config.csv.beneficiarios.dni]}', 
                 '${data[config.csv.beneficiarios.nombre]}', 
                 '${data[config.csv.beneficiarios.sexo]}', 
-                '${data[config.csv.beneficiarios.fechanacimiento]}', 
-                '${data[config.csv.beneficiarios.fecharegistro]}', 
+                '${fecha_nacimiento[2]}/${fecha_nacimiento[1]}/${fecha_nacimiento[0]}', 
+                '${fecha_registro[2]}/${fecha_registro[1]}/${fecha_registro[0]}', 
                 '${data[config.csv.beneficiarios.seguro]}', 
                 '${data[config.csv.beneficiarios.numeroseguro]}', 
                 '${data[config.csv.beneficiarios.discapacidad]}', 
                 '0,${fila}');`
-        // console.log(sql_beneficiario)
+
+        console.log(sql_beneficiario)
         connection.query(sql_beneficiario, function (error, results, fields) {
         if (error) throw error;
             // console.log('The solution is: ', results[0].solution);
-            console.log(results)
+            // console.log(results)
         });
 
         // insertar facilitador
@@ -53,7 +56,7 @@ var csvStream = csv()
         connection.query(sql_facilitador, function (error, results, fields) {
         if (error) throw error;
             // console.log('The solution is: ', results[0].solution);
-            console.log(results)
+            // console.log(results)
         });
 
         // insertar cuidador
@@ -68,7 +71,7 @@ var csvStream = csv()
         connection.query(sql_cuidador, function (error, results, fields) {
         if (error) throw error;
             // console.log('The solution is: ', results[0].solution);
-            console.log(results)
+            // console.log(results)
         });
 
         // outdata.push(data)

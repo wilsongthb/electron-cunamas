@@ -1,0 +1,42 @@
+{
+    hogar: {
+        "105096":{
+            facilitador: {
+                "296688": true
+            }
+            niños: {
+                "80933039": true
+            },
+            cuidador: {
+                "296209": true
+            }
+        },
+        "105115": {
+            codigoFacilitador: 374890
+        }
+    },
+    niños: {
+        "296160": {
+            dni: "80933039",
+            nombres: "JHON YERSON MOLLEAPAZA SURCO",
+            fechaNacimiento: "18/09/2014",
+            fechaRegistro: "18/09/2014",
+            seguro: true,
+            numeroSeguro: "2-80933039",
+            discapacidad: false,
+            hogar: '105096',
+            facilitador: 105096
+        }
+    },
+    cuidador: {
+        "295674" :{
+            nombre: "FIDELA JESUSA SURCO HANCCO",
+            sexo: "F"
+        }
+    },
+    facilitador: {
+        "296688": {
+            nombre: "CORINA SOLANO PARI"
+        }
+    }
+}
