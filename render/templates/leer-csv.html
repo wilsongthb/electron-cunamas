@@ -1,0 +1,13 @@
+<template id="lector-csv">
+    <div>
+        <input type="text" v-model="path">
+        <button @click="leer()">Leer</button>
+        
+        <table id="csv-tabla" class="table table-bordered small">
+            <tr>
+                <td>Cargando...</td>
+            </tr>
+        </table>
+        
+    </div>
+</template>

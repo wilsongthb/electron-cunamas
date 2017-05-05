@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+
+<div id="root" class="container">
+    <!--<lector-csv></lector-csv>-->
+    <usador></usador>
+</div>
+
+
+<!--Cargar los templates-->
+<div id="templates"></div>
+<script src="render/cargarTemplates.js"></script>
+
+
+<!--Scripts web-->
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+// Cargar los componentes
+var lectorCsv = require('./render/components/leer-csv.js')
+// var usador = {template:'#usado', componentes: {
+//     lectorCsv: lectorCsv
+// }}
+
+Vue.component('usador', {
+    template:'#usado', componentes: {
+        // lectorCsv: lectorCsv
+    }
+})
+
+new Vue({
+    el: '#root',
+    components: {
+        // usador: usador,
+        lectorCsv: lectorCsv,
+        
+    }
+})
+</script>
+<script>if (window.module) module = window.module;</script>
+<!--end Scripts-->

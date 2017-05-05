@@ -1,3 +1,10 @@
+////////////////////////////////////////////////////////////////
+//
+// API REST FULL PARA LA BASE DE DATOS CUNAMAS EN mysql
+// REVISAR LA CONFIGURACION EN EL ARCHIVO main/config.json
+//
+////////////////////////////////////////////////////////////////
+
 var express = require('express');
 var mysql = require('mysql');
 var mysqltorest  = require('mysql-to-rest');

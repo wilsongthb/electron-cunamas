@@ -21,7 +21,7 @@ function leercsv(entrada){
         })
         .on("end", function(){
             console.log("done");
-            fs.writeFileSync(salida, 'module.exports = ' + JSON.stringify(outdata))
+            // fs.writeFileSync(salida, 'module.exports = ' + JSON.stringify(outdata))
         });
     
     stream.pipe(csvStream);

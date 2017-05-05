@@ -36,7 +36,7 @@ var csvStream = csv()
                 '${data[config.csv.beneficiarios.discapacidad]}', 
                 '0,${fila}');`
 
-        console.log(sql_beneficiario)
+        // console.log(sql_beneficiario)
         connection.query(sql_beneficiario, function (error, results, fields) {
         if (error) throw error;
             // console.log('The solution is: ', results[0].solution);
