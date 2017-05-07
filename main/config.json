@@ -12,6 +12,7 @@
         }
     },
     "csv": {
+        "fechaSplit": "/",
         "beneficiarios": {
             "dni": "29",
             "nombre": "24",

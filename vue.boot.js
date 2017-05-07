@@ -13,7 +13,9 @@ Vue.component('panel', require('./render/components/obj.panel.js'))
 
 // Componentes de la aplicacion
 require('./render/components/firecsv')
-//
+
+//funciones utiles
+const edad = require('./render/edad.js')
 
 new Vue({
     el: '#root',

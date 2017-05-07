@@ -2,10 +2,15 @@ var fs = require('fs')
 var path = require('path')
 var csv = require('fast-csv')
 
-consola('componente llamado de :' + __dirname)
+consola('Path Component:' + __dirname)
 
 module.exports = {
     template: fs.readFileSync(path.join(__dirname, 'template.html'), {encoding: 'utf-8'}),
+    data(){
+        return {
+            verCsv: false
+        }
+    },
     props: {
         path: String
     },
@@ -19,7 +24,6 @@ module.exports = {
                 .parse()
                 .on("data", function(data){
                     // console.log(data);
-                    
                     templateCSV += `<tr>`
                     data.forEach(function(element) {
                         templateCSV += `<td>${element}</td>`
@@ -35,4 +39,7 @@ module.exports = {
             stream.pipe(csvStream);
         }
     },
+    created(){
+        this.leer()
+    }
 }
