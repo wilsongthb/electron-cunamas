@@ -1,4 +1,6 @@
 {
+    "dev": true,
+    "consola": true,
     "name": "cunamas",
     "db": {
         "portApi": "8041",
