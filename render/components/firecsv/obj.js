@@ -8,7 +8,6 @@ module.exports = {
     template: fs.readFileSync(path.join(__dirname, 'template.html'), {encoding: 'utf-8'}),
     data(){
         return {
-            verCsv: false,
             beneficiarios: []
         }
     },
@@ -17,6 +16,8 @@ module.exports = {
     },
     methods: {
         leer(){
+            if(document.getElementById('csv-tabla'))
+                document.getElementById('csv-tabla').innerHTML = 'Leendo ...'
             // console.log('Cargando')
             var stream = fs.createReadStream(this.path, { encoding: 'UTF-8'});
             var templateCSV = ''
@@ -35,7 +36,7 @@ module.exports = {
                         }else
                             obj_beneficiario[i] = data[config.csv.beneficiarios[i]]
                     }
-                    consola(obj_beneficiario)
+                    // consola(obj_beneficiario)
                     this.beneficiarios.push(obj_beneficiario)
 
                     // console.log(data);
