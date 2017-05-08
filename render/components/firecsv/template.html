@@ -22,19 +22,9 @@
     </div>
     
     <div class="row">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <h3>Beneficiarios</h3>
-
-            <div class="panel panel-success" v-for="b in beneficiarios" :class="{'panel-warning': (b.meses>30), 'panel-danger': (b.meses>36)}">
-                  <div class="panel-heading">
-                        <h3 class="panel-title">{{b.nombre}} </h3>
-                  </div>
-                  <div class="panel-body">
-                      <label for="">Fecha de Nacimiento: {{b.fechanacimiento}} </label>
-                      <label for="">Edad: {{b.edad}} </label>
-                      <label for="">Edad en Meses: {{b.meses}} </label>
-                  </div>
-            </div>
+            <beneficiario v-for="(b, index) in listaBeneficiarios" :key="index" :b="b"></beneficiario>
             
         </div>
     </div>

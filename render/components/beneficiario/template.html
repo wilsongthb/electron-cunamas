@@ -1,31 +1,10 @@
-<div class="row">
-    <h3>FireCSV</h3>
-    <label for="">Mostrar CSV</label> <input type="checkbox" v-model="verCsv">
-    
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" v-show="verCsv" >
-        <!--CSV leido-->
-        <input type="text" v-model="path">
-        <button @click="leer()">Leer</button>
-        <table id="csv-tabla" class="table table-bordered table-responsive small"></table>
-    </div>
-    
-    <div class="row">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-            <h3>Beneficiarios</h3>
-            
-            <div class="panel panel-info">
-                  <div class="panel-heading">
-                        <h3 class="panel-title">Panel title</h3>
-                  </div>
-                  <div class="panel-body">
-                        Panel content
-                  </div>
-            </div>
-            
+<div class="panel panel-success" :class="{'panel-warning': (b.meses>30), 'panel-danger': (b.meses>36)}">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{b.nombre}} </h3>
         </div>
-    </div>
-    
-
-    
-    
+        <div class="panel-body">
+            <label for="">Fecha de Nacimiento: {{b.fechanacimiento}} </label><br>
+            <label for="">Edad: {{b.edad}} </label><br>
+            <label for="">Edad en Meses: {{b.meses}} </label><br>
+        </div>
 </div>

@@ -2,7 +2,10 @@ var fs = require('fs')
 var path = require('path')
 var csv = require('fast-csv')
 
-consola('Path Component:' + __dirname)
+consola(`
+    Path Component:
+    ${__dirname}
+`)
 
 module.exports = {
     template: fs.readFileSync(path.join(__dirname, 'template.html'), {encoding: 'utf-8'}),
@@ -16,6 +19,8 @@ module.exports = {
     },
     methods: {
         leer(){
+            var lineaCsv = -1
+
             if(document.getElementById('csv-tabla'))
                 document.getElementById('csv-tabla').innerHTML = 'Leendo ...'
             // console.log('Cargando')
@@ -25,6 +30,8 @@ module.exports = {
             var csvStream = csv
                 .parse()
                 .on("data", function(data){
+
+                    // cargar beneficiarios
                     var obj_beneficiario = {}
                     for(i in config.csv.beneficiarios){
                         if(i === 'fechanacimiento'){
@@ -39,8 +46,21 @@ module.exports = {
                     // consola(obj_beneficiario)
                     this.beneficiarios.push(obj_beneficiario)
 
+
+                    // cargar la vista del csv
                     // console.log(data);
+                    if(lineaCsv == -1){
+                        templateCSV += `<tr>`
+                        templateCSV += `<th></th>`
+                        for (var index = 0; index < data.length; index++) {
+                            templateCSV += `<th>${index}</th>`
+                        }
+                        templateCSV += `</tr>`
+                    }
+                    lineaCsv++
+
                     templateCSV += `<tr>`
+                    templateCSV += `<th>${lineaCsv}</th>`
                     data.forEach(function(element) {
                         templateCSV += `<td>${element}</td>`
                     }, this);
@@ -57,5 +77,16 @@ module.exports = {
     },
     created(){
         this.leer()
+    },
+    computed: {
+        listaBeneficiarios(){
+            return this.beneficiarios.sort(function(a, b){
+                if(a.meses < b.meses)
+                    return 1
+                if(a.meses > b.meses)
+                    return -1
+                return 0
+            })
+        }
     }
 }

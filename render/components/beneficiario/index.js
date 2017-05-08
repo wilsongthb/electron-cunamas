@@ -1,2 +1,2 @@
 // Vue Component
-Vue.component('firecsv', require('./obj.js'))
+Vue.component('beneficiario', require('./obj.js'))
